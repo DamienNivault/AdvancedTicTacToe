@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,swift
 # Edit at https://www.gitignore.io/?templates=node,swift
-
+.DS_Store
 ### Node ###
 # Logs
 logs
