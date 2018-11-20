@@ -1,0 +1,9 @@
+{
+  "name": "tictactoeserver",
+  "version": "1.0.0",
+  "description": "Server for AdvancedTicTacToe app",
+  "author": "Anthony Spault & Damien Nivault",
+  "dependencies": {
+    "socket.io": "^2.1.1"
+  }
+}
