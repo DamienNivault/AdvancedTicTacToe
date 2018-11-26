@@ -32,7 +32,7 @@ extension UIViewController {
     }
 }
 
-class ViewController: UIViewController, UITextFieldDelegate{
+class RegisterViewController: UIViewController, UITextFieldDelegate{
    
     var validationLabel = UILabel()
     var username = UITextField()
@@ -117,8 +117,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         self.view.backgroundColor = UIColor(patternImage: image)
-        
-        // MARK: - Helper Methods
     
     }
     func setupView() {
