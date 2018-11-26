@@ -1,87 +1,34 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  AdvancedTicTacToe
 //
-//  Created by Damien Nivault on 20/11/2018.
+//  Created by Damien Nivault on 26/11/2018.
 //  Copyright © 2018 nivault&spault. All rights reserved.
 //
 
 import UIKit
-import Alamofire
 
-extension UITextField {
-    func setLeftPaddingPoints(_ amount:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }
-    func setRightPaddingPoints(_ amount:CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
-    }
-}
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
+class LoginViewController: UIViewController, UITextFieldDelegate{
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
-class ViewController: UIViewController, UITextFieldDelegate{
-   
     var validationLabel = UILabel()
     var username = UITextField()
     var labelEmail = UITextField()
     var labelPassword = UITextField()
     var labelVerifPassword = UITextField()
     
-    @objc func submitForm() {
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "application/json",
-        ]
-        
-        let parameters = [
-            "username": username.text!,
-            "email": labelEmail.text!,
-            "password": labelPassword.text!,
-            "passwordConfirm": labelVerifPassword.text!
-        ]
-        Alamofire.request("http://tictactoe.spault.cloud/users/register", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
-            print("Response JSON: \(response.result.value ?? "error")")
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardWhenTappedAround()
         
-       
+        
         validationLabel.text = "Validation label"
         validationLabel.numberOfLines = 2
         validationLabel.textAlignment = .center
         validationLabel.font.withSize(12)
         validationLabel.textColor = UIColor(red: 51.0/255, green: 153.0/255, blue: 255.0/255, alpha: 0.9)
         self.view.addSubviewGrid(validationLabel, grid: [1, 2, 10, 0.75])
-        
-        username.placeholder = "Username"
-        username.backgroundColor = UIColor.white
-        username.layer.cornerRadius = 5
-        username.alpha = 0.7;
-        username.setLeftPaddingPoints(15)
-        username.keyboardAppearance = UIKeyboardAppearance.dark;
-        username.returnKeyType = UIReturnKeyType.continue
-        username.delegate = self
-        username.tag = 1
-        self.view.addSubviewGrid(username, grid: [1, 3, 10, 0.75])
-        
         
         labelEmail.placeholder = "Email"
         labelEmail.backgroundColor = UIColor.white
@@ -108,30 +55,16 @@ class ViewController: UIViewController, UITextFieldDelegate{
         labelPassword.delegate = self
         labelPassword.tag = 3
         self.view.addSubviewGrid(labelPassword, grid: [1, 5, 10, 0.75])
-     
-        
-        labelVerifPassword.placeholder = "Password Verification"
-        labelVerifPassword.backgroundColor = UIColor.white
-        labelVerifPassword.layer.cornerRadius = 5
-        labelVerifPassword.alpha = 0.9;
-        labelVerifPassword.isSecureTextEntry = true
-        labelVerifPassword.setLeftPaddingPoints(15)
-        labelVerifPassword.keyboardAppearance = UIKeyboardAppearance.dark;
-        labelVerifPassword.returnKeyType = UIReturnKeyType.join
-        labelVerifPassword.delegate = self
-        labelVerifPassword.tag = 4
-        self.view.addSubviewGrid(labelVerifPassword, grid: [1, 6, 10, 0.75])
         
         
         let button = UIButton()
         button.backgroundColor = UIColor(red: 51.0/255, green: 153.0/255, blue: 255.0/255, alpha: 0.9)
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        self.view.addSubviewGrid(button, grid: [1, 8,10,1])
+        self.view.addSubviewGrid(button, grid: [1,8,10,1])
         
-        button.addTarget(self, action: #selector(submitForm), for: .touchUpInside)
         
-       
+        
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "background")?.draw(in: self.view.bounds)
@@ -140,7 +73,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.view.backgroundColor = UIColor(patternImage: image)
         
         // MARK: - Helper Methods
-    
+        
     }
     func setupView() {
         // Configure Password Validation Label
@@ -160,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return (text.count > 0, "This field cannot be empty.")
     }
     
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("in function")
         switch textField {
         case username:
@@ -189,14 +122,3 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return true
     }
 }
-
-
-extension UIView {
-    
-    func addSubviewGrid(_ view: UIView, grid: [CGFloat]) {
-        view.frame = CGRect(x: self.frame.width/12*CGFloat(grid[0]), y: self.frame.height/12*CGFloat(grid[1]), width: self.frame.width/12*CGFloat(grid[2]), height: self.frame.height/12*CGFloat(grid[3]))
-        self.addSubview(view)
-    }
-}
-
-
