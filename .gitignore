@@ -167,3 +167,5 @@ iOSInjectionProject/
 /server/data
 
 yarn.lock
+/app/AdvancedTicTacToe/Pods
+Podfile.lock
