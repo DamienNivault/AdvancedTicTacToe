@@ -34,7 +34,10 @@ app.use('/users', require('./users/users.controller'));
 // global error handler
 app.use(errorHandler);
 
-io.on('connection', function(socket) {
-    console.log('new connection');
-    socket.emit('message', 'This is a message from the dark side.');
+io.sockets.on('connection', function (socket) {
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
 });
+
