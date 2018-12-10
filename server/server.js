@@ -1,8 +1,19 @@
 ﻿require('rootpath')();
 const https = require('https');
 const fs = require('fs');
+
 const express = require('express');
 const app = express();
+
+const options = {
+    key: key,
+    cert: cert,
+    ca: ca
+};
+const serverPort = 443;
+const server = https.createServer(options, app);
+const io = require('socket.io')(server);
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
@@ -25,11 +36,9 @@ var key = fs.readFileSync('/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.ke
 var cert = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer' );
 var ca = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer' );
 
-var options = {
-    key: key,
-    cert: cert,
-    ca: ca
-};
+
 
 // start server
-https.createServer(options, app).listen(443);
+server.listen(serverPort, function() {
+    console.log('server up and running at %s port', serverPort);
+});
