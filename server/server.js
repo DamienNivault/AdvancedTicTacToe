@@ -7,8 +7,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
-const io = require('socket.io')(https);
-const server = https.createServer(options, app)
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -33,4 +31,5 @@ var options = {
     ca: ca
 };
 
-server.listen(443)
+// start server
+https.createServer(options, app).listen(443);
