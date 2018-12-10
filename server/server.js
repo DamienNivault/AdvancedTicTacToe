@@ -14,7 +14,7 @@ const serverPort = 443;
 const server = https.createServer(options, app).listen(serverPort, function() {
     console.log('server up and running at %s port', serverPort);
 });;
-const io = require('socket.io')(server);
+const io = require('socket.io').listen(server);
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
