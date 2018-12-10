@@ -11,7 +11,9 @@ const options = {
     ca: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer')
 };
 const serverPort = 443;
-const server = https.createServer(options, app);
+const server = https.createServer(options, app).listen(serverPort, function() {
+    console.log('server up and running at %s port', serverPort);
+});;
 const io = require('socket.io')(server);
 
 const cors = require('cors');
@@ -35,9 +37,4 @@ app.use(errorHandler);
 io.on('connection', function(socket) {
     console.log('new connection');
     socket.emit('message', 'This is a message from the dark side.');
-});
-
-// start server
-server.listen(serverPort, function() {
-    console.log('server up and running at %s port', serverPort);
 });
