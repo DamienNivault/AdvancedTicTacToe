@@ -6,9 +6,9 @@ const express = require('express');
 const app = express();
 
 const options = {
-    key: key,
-    cert: cert,
-    ca: ca
+    key: fs.readFileSync('/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.key'),
+    cert: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer'),
+    ca: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer')
 };
 const serverPort = 443;
 const server = https.createServer(options, app);
@@ -32,11 +32,10 @@ app.use('/users', require('./users/users.controller'));
 // global error handler
 app.use(errorHandler);
 
-var key = fs.readFileSync('/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.key');
-var cert = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer' );
-var ca = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer' );
-
-
+io.on('connection', function(socket) {
+    console.log('new connection');
+    socket.emit('message', 'This is a message from the dark side.');
+});
 
 // start server
 server.listen(serverPort, function() {
