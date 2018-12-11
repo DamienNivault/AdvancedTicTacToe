@@ -39,15 +39,14 @@ app.use(errorHandler);
 var onlinePlayers = {}
 
 io.on('connection', function (socket) {
-    console.log("connecté")
     socket.on('join_server', function(token) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
         userService.getByToken(token).then(function (user) {
             onlinePlayers[user] = socket
+            console.log(onlinePlayers)        
         })
-        console.log(onlinePlayers)        
     })
 });
 
