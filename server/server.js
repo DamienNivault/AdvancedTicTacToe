@@ -15,11 +15,11 @@ const options = {
 const serverPort = 80;
 // const server = https.Server(options, app);
 const server = https.Server(app);
-server.listen(serverPort, function() {
-    console.log('server up and running at %s port', serverPort);
-});
 
-const io = require('socket.io').listen(server);
+
+const io = require('socket.io')(server);
+
+
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -53,6 +53,10 @@ io.on('connection', function (socket) {
         console.log(userService.getByToken(token));
         
     })
+});
+
+server.listen(serverPort, function() {
+    console.log('server up and running at %s port', serverPort);
 });
 
 // var leaveGame = function (socket) {
