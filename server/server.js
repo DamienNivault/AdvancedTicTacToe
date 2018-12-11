@@ -36,7 +36,3 @@ app.use('/users', require('./users/users.controller'));
 // global error handler
 app.use(errorHandler);
 
-io.sockets.on('connection', function (socket) {
-    socket.emit('message', { hello: 'world' });
-    console.log("CONNECTÉ")
-});
