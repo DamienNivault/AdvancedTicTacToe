@@ -14,11 +14,8 @@ const options = {
 };
 const serverPort = 80;
 // const server = https.Server(options, app);
-const server = https.Server(app);
-
-
+const server = https.createServer(app);
 const io = require('socket.io')(server);
-
 
 
 const cors = require('cors');
@@ -48,8 +45,6 @@ io.on('connection', function (socket) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
-        console.log("join server");
-        console.log(token);
         console.log(userService.getByToken(token));
         
     })

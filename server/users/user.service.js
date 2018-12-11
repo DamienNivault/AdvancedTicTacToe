@@ -40,7 +40,8 @@ async function getById(id) {
 }
 
 async function getByToken(token) {
-    return jwt.verify(token, config.secret);
+    let promise = jwt.verify(token, config.secret);
+    return await getById(promise.sub);
 }
 
 async function create(userParam) {
