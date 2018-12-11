@@ -56,7 +56,10 @@ io.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         let key = getKeyByValue(onlinePlayers, socket);
-        console.log(key)
+        if (key !== undefined) {
+            delete onlinePlayers[key];
+        }
+        console.log(onlinePlayers)
     });
 });
 
