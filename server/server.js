@@ -108,7 +108,8 @@ io.on('connection', function (socket) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
-
+        console.log("join server");
+        console.log(token)
         console.log(userService.getByToken(token))
         
     })
