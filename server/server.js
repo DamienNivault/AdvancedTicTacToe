@@ -44,7 +44,9 @@ io.on('connection', function (socket) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
-        let prout = await userService.getByToken(token)
+        userService.getByToken(token).then(function (prout) {
+            console.log(prout)
+        })
         console.log(prout);
         
     })
