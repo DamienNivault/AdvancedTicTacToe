@@ -42,7 +42,27 @@ app.use(errorHandler);
 var onlinePlayers = {}
 
 io.on('connection', function (socket) {
-    // socket.on("movement", function (index) {
+    console.log("connecté")
+    socket.on('join_server', function(token) {
+        // Token decrypte
+        // get user with mongo
+        // push socket in onlinePlayers "anthony": socket
+        console.log("join server");
+        console.log(token);
+        console.log(userService.getByToken(token));
+        
+    })
+});
+
+// var leaveGame = function (socket) {
+//     if (games[socket.gamename]) {
+//         io.to(socket.gamename).emit('opponent_leave');
+//         winner.leave(games[socket.gamename].name)
+//         winner.game = null;
+//     }
+// };
+
+// socket.on("movement", function (index) {
     //     var game = games[socket.gamename]
     //     if (game) {
     //         if (game.turn === socket.wording) {
@@ -103,22 +123,3 @@ io.on('connection', function (socket) {
     // socket.on('disconnect', function () {
     //     leaveGame(socket);
     // });
-
-    socket.on('join_server', function(token) {
-        // Token decrypte
-        // get user with mongo
-        // push socket in onlinePlayers "anthony": socket
-        console.log("join server");
-        console.log(token)
-        console.log(userService.getByToken(token))
-        
-    })
-});
-
-// var leaveGame = function (socket) {
-//     if (games[socket.gamename]) {
-//         io.to(socket.gamename).emit('opponent_leave');
-//         winner.leave(games[socket.gamename].name)
-//         winner.game = null;
-//     }
-// };
