@@ -1,4 +1,6 @@
 ﻿require('rootpath')();
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -19,8 +21,15 @@ app.use('/users', require('./users/users.controller'));
 // global error handler
 app.use(errorHandler);
 
+var key = fs.readFileSync('/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.key');
+var cert = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer' );
+var ca = fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer' );
+
+var options = {
+    key: key,
+    cert: cert,
+    ca: ca
+};
+
 // start server
-const port = process.env.NODE_ENV === 'production' ? 80 : 4000;
-const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
-});
+https.createServer(options, app).listen(443);
