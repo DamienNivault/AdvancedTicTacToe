@@ -28,6 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             "password": labelPassword.text!
         ]
         Alamofire.request("https://tictactoe.spau.lt/users/authenticate", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
+            
             let json = JSON(response.result.value!)
             let token = json["token"].stringValue
             let username = json["username"].stringValue
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             defaults.set(draws, forKey: "draws")
             defaults.set(username, forKey: "username")
             defaults.set(draws, forKey: "draws")
+            self.present( UIStoryboard(name: "OnlineStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MainOnlineStoryBoard") as UIViewController, animated: true, completion: nil)
         }
     }
 
@@ -61,6 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         labelEmail.placeholder = "Email"
         labelEmail.backgroundColor = UIColor.white
         labelEmail.layer.cornerRadius = 5
+        labelEmail.text = "dams@dams.dams"
         labelEmail.alpha = 0.7;
         labelEmail.setLeftPaddingPoints(15)
         labelEmail.keyboardAppearance = UIKeyboardAppearance.dark;
@@ -75,6 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         labelPassword.placeholder = "Password"
         labelPassword.backgroundColor = UIColor.white
         labelPassword.layer.cornerRadius = 5
+        labelPassword.text = "dams"
         labelPassword.alpha = 0.7;
         labelPassword.isSecureTextEntry = true
         labelPassword.setLeftPaddingPoints(15)

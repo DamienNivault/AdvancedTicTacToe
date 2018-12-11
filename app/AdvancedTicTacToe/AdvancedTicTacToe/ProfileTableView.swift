@@ -1,21 +1,37 @@
 //
-//  OnlineViewController.swift
+//  ProfileTableView.swift
 //  AdvancedTicTacToe
 //
-//  Created by Damien Nivault on 30/11/2018.
+//  Created by Damien Nivault on 11/12/2018.
 //  Copyright © 2018 nivault&spault. All rights reserved.
 //
 
 import Foundation
 import UIKit
-
-class OnlineViewController: UIViewController, UITextFieldDelegate{
+class ProfileTableView: UITableViewController  {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("count", profile.count)
+        return profile.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "score")
+        print("cell", profile[indexPath.row])
+        cell.detailTextLabel?.text = profile[indexPath.row]
+        cell.textLabel?.text = "Victories"
+        return cell
+    }
     
     var validationLabel = UILabel()
+    
+    let profile = [
+        UserDefaults.standard.string(forKey: "victories"),
+        UserDefaults.standard.string(forKey: "losses"),
+        UserDefaults.standard.string(forKey: "draws")
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
+        
         validationLabel.numberOfLines = 2
         validationLabel.textAlignment = .center
         validationLabel.font.withSize(12)
@@ -32,9 +48,10 @@ class OnlineViewController: UIViewController, UITextFieldDelegate{
         self.view.backgroundColor = UIColor(patternImage: image)
         
         // MARK: - Helper Methods
-        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         let username = UserDefaults.standard.string(forKey: "username")
         validationLabel.text = username
     }
+    
 }

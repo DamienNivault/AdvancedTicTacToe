@@ -13,7 +13,7 @@
         <!--Offline-->
         <scene sceneID="w7w-qv-Edx">
             <objects>
-                <viewController id="SEi-RG-h2Q" customClass="OnlineViewController" customModule="AdvancedTicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SEi-RG-h2Q" customClass="OfflineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7D-2j-mUl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
