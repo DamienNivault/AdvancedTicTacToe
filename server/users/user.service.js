@@ -8,6 +8,7 @@ module.exports = {
     authenticate,
     getAll,
     getById,
+    getByToken,
     create,
     update,
     delete: _delete
@@ -36,6 +37,10 @@ async function getAll() {
 
 async function getById(id) {
     return await User.findById(id).select('-password');
+}
+
+async function getByToken(token) {
+    console.log(getById(jwt.verify(token, config.secret)))
 }
 
 async function create(userParam) {
