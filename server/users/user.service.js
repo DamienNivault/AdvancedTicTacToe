@@ -22,15 +22,10 @@ async function authenticate({ login, password }) {
     const user = tmp;
     tmp = null
     if (user && bcrypt.compareSync(password, user.password)) {
-        console.log(user)
-        const user = user.toObject();
+        const { password, ...userWithoutPassword } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
-        delete user.password
-        delete user.id
-        delete user.email
-        delete user.createdDate
         return {
-            user,
+            ...userWithoutPassword,
             token
         };
     }
