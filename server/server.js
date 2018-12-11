@@ -1,7 +1,7 @@
 ﻿// var Game = require('./table.js');
 
 require('rootpath')();
-const https = require('https');
+const https = require('http');
 const fs = require('fs');
 
 const express = require('express');
@@ -12,8 +12,9 @@ const options = {
     cert: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer'),
     ca: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer')
 };
-const serverPort = 443;
-const server = https.Server(options, app);
+const serverPort = 80;
+// const server = https.Server(options, app);
+const server = https.Server(app);
 server.listen(serverPort, function() {
     console.log('server up and running at %s port', serverPort);
 });
