@@ -109,7 +109,7 @@ io.on('connection', function (socket) {
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
 
-        userService.getByToken(token)
+        console.log(userService.getByToken(token))
         
     })
 });

@@ -40,7 +40,7 @@ async function getById(id) {
 }
 
 async function getByToken(token) {
-    console.log(getById(jwt.verify(token, config.secret)))
+    return jwt.verify(token, config.secret);
 }
 
 async function create(userParam) {
