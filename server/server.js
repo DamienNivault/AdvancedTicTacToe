@@ -44,8 +44,9 @@ io.on('connection', function (socket) {
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
         userService.getByToken(token).then(function (user) {
-            onlinePlayers[user] = socket
-            console.log(onlinePlayers)        
+            onlinePlayers[user.username] = socket
+            
+            socket.emit('list_users', Object.keys(onlinePlayers))
         })
     })
 });
