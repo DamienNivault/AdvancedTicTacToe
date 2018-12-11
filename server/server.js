@@ -38,6 +38,10 @@ app.use(errorHandler);
 
 var onlinePlayers = {}
 
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 io.on('connection', function (socket) {
     socket.on('join_server', function(token) {
         // Token decrypte
@@ -48,7 +52,12 @@ io.on('connection', function (socket) {
             
             socket.emit('list_users', Object.keys(onlinePlayers))
         })
-    })
+    });
+
+    socket.on('disconnect', function () {
+        let key = getKeyByValue(onlinePlayers, socket);
+        console.log(key)
+    });
 });
 
 server.listen(serverPort, function() {
