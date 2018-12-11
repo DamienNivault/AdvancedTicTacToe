@@ -47,7 +47,6 @@ io.on('connection', function (socket) {
         userService.getByToken(token).then(function (prout) {
             console.log(prout)
         })
-        console.log(prout);
         
     })
 });
