@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
             "password": labelPassword.text!,
             "passwordConfirm": labelVerifPassword.text!
         ]
-        Alamofire.request("http://tictactoe.spault.cloud/users/register", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
+        Alamofire.request("https://tictactoe.spau.lt/users/register", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
             print("Response JSON: \(response.result.value ?? "error")")
         }
     }
