@@ -12,7 +12,11 @@ const options = {
 };
 const serverPort = 443;
 const server = https.Server(options, app);
-const io = require('socket.io')(server);
+server.listen(serverPort, function() {
+    console.log('server up and running at %s port', serverPort);
+});
+
+const io = require('socket.io').listen(server);
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -37,8 +41,4 @@ io.sockets.on('connection', function (socket) {
     socket.on('my other event', function (data) {
         console.log(data);
     });
-});
-
-server.listen(serverPort, function() {
-    console.log('server up and running at %s port', serverPort);
 });
