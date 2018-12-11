@@ -44,10 +44,10 @@ io.on('connection', function (socket) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
-        userService.getByToken(token).then(function (prout) {
-            console.log(prout)
+        userService.getByToken(token).then(function (user) {
+            onlinePlayers[user] = socket
         })
-        
+        console.log(onlinePlayers)        
     })
 });
 
