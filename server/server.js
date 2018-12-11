@@ -1,7 +1,7 @@
 ﻿// var Game = require('./table.js');
 
 require('rootpath')();
-const https = require('http');
+const https = require('https');
 const fs = require('fs');
 
 const express = require('express');
@@ -12,9 +12,8 @@ const options = {
     cert: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/tictactoe.spau.lt.cer'),
     ca: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer')
 };
-const serverPort = 80;
-// const server = https.Server(options, app);
-const server = https.createServer(app);
+const serverPort = 443;
+const server = https.Server(options, app);
 const io = require('socket.io')(server);
 
 
@@ -45,7 +44,7 @@ io.on('connection', function (socket) {
         // Token decrypte
         // get user with mongo
         // push socket in onlinePlayers "anthony": socket
-        console.log(userService.getByToken(token));
+        console.log(await userService.getByToken(token));
         
     })
 });
