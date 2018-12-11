@@ -44,12 +44,8 @@ function getKeyByValue(object, value) {
 
 io.on('connection', function (socket) {
     socket.on('join_server', function(token) {
-        // Token decrypte
-        // get user with mongo
-        // push socket in onlinePlayers "anthony": socket
         userService.getByToken(token).then(function (user) {
             onlinePlayers[user.username] = socket
-            
             socket.emit('list_users', Object.keys(onlinePlayers))
         })
     });
@@ -59,7 +55,6 @@ io.on('connection', function (socket) {
         if (key !== undefined) {
             delete onlinePlayers[key];
         }
-        console.log(onlinePlayers)
     });
 });
 
