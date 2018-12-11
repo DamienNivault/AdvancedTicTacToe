@@ -11,7 +11,7 @@ const options = {
     ca: fs.readFileSync( '/root/.acme.sh/tictactoe.spau.lt/ca.cer')
 };
 const serverPort = 443;
-const server = https.createServer(options, app);
+const server = https.Server(options, app);
 const io = require('socket.io')(server);
 
 const cors = require('cors');
