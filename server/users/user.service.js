@@ -8,6 +8,7 @@ module.exports = {
     authenticate,
     getAll,
     getById,
+    getByToken,
     create,
     update,
     delete: _delete
@@ -19,12 +20,12 @@ async function authenticate({ login, password }) {
         tmp = await User.findOne({ email: login });
     }
     const user = tmp;
-    tmp = ""
+    tmp = null
     if (user && bcrypt.compareSync(password, user.password)) {
-        const { password, ...userWithoutPassword } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
+        const { password, _id, email, createdDate, __v, ...userWithoutData } = user.toObject();
         return {
-            ...userWithoutPassword,
+            ...userWithoutData,
             token
         };
     }
@@ -36,6 +37,11 @@ async function getAll() {
 
 async function getById(id) {
     return await User.findById(id).select('-password');
+}
+
+async function getByToken(token) {
+    let promise = jwt.verify(token, config.secret);
+    return await getById(promise.sub);
 }
 
 async function create(userParam) {
