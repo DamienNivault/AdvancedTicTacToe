@@ -1,4 +1,4 @@
-﻿var Game = require('./table.js');
+﻿// var Game = require('./table.js');
 
 require('rootpath')();
 const https = require('https');
