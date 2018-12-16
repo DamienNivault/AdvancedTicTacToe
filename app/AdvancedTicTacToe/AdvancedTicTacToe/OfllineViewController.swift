@@ -82,11 +82,11 @@ class OfflineViewController: UIViewController {
         if (currentGame[tag - 1] == 0 && canPlay) {
             currentGame[tag - 1] = currentPlayer
             if (currentPlayer == 1) {
-                sender.setImage(UIImage(named: "O.png"), for: UIControlState.normal)
+                sender.setImage(UIImage(named: "O.png"), for: UIControl.State.normal)
                 checkGame()
                 currentPlayer = 2
             } else {
-                sender.setImage(UIImage(named: "X.png"), for: UIControlState.normal)
+                sender.setImage(UIImage(named: "X.png"), for: UIControl.State.normal)
                 checkGame()
                 currentPlayer = 1
             }
@@ -103,7 +103,7 @@ class OfflineViewController: UIViewController {
             reloadButton.tintColor = UIColor.black
             for i in 1..<10 {
                 let tmpButton = self.view.viewWithTag(i) as? UIButton
-                tmpButton?.setImage(nil, for: UIControlState.normal)
+                tmpButton?.setImage(nil, for: UIControl.State.normal)
                 tmpButton?.tintColor = UIColor.black
             }
         }
