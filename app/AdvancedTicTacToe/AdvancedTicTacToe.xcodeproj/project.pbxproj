@@ -17,6 +17,7 @@
 		9F88365621C0081B001899F7 /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88365521C0081B001899F7 /* ProfileTableView.swift */; };
 		E95DF90621AC432300FB664C /* OnlineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E95DF90521AC432300FB664C /* OnlineStoryboard.storyboard */; };
 		E95DF90821AC4F4A00FB664C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95DF90721AC4F4A00FB664C /* LoginViewController.swift */; };
+		E9794DE321C6E7E500181202 /* OfllineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9794DE221C6E7E500181202 /* OfllineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DFC6C9C5ECDEFFB30DC319ED /* Pods-AdvancedTicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvancedTicTacToe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdvancedTicTacToe/Pods-AdvancedTicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
 		E95DF90521AC432300FB664C /* OnlineStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnlineStoryboard.storyboard; sourceTree = "<group>"; };
 		E95DF90721AC4F4A00FB664C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E9794DE221C6E7E500181202 /* OfllineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfllineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		9F3D0C6E21A447E6006F8BDB /* AdvancedTicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				E9794DE221C6E7E500181202 /* OfllineViewController.swift */,
 				E95DF90721AC4F4A00FB664C /* LoginViewController.swift */,
 				9F3D0C6F21A447E6006F8BDB /* AppDelegate.swift */,
 				9F3D0C7121A447E6006F8BDB /* RegisterViewController.swift */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9794DE321C6E7E500181202 /* OfllineViewController.swift in Sources */,
 				E95DF90821AC4F4A00FB664C /* LoginViewController.swift in Sources */,
 				9F613AE921B1908D007CA8F2 /* OnlineViewController.swift in Sources */,
 				9F3D0C7221A447E6006F8BDB /* RegisterViewController.swift in Sources */,
