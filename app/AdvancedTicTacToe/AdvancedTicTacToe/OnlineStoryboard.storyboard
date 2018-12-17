@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Offline-->
-        <scene sceneID="a75-6R-6Zk">
-            <objects>
-                <viewController id="eG6-2S-dzI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cRd-wI-Ahg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="sBA-EM-fL9"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Offline" id="NPo-bi-cg1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JWd-r9-gal" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-607" y="793"/>
-        </scene>
         <!--Online-->
         <scene sceneID="lbm-DP-03r">
             <objects>
@@ -36,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zV4-bg-9BZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Online" id="twp-CC-fIL"/>
+                    <tabBarItem key="tabBarItem" title="Online" image="wireless-internet" id="twp-CC-fIL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ick-8O-Ck4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +37,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="DMK-lv-xCa" kind="relationship" relationship="viewControllers" id="zwd-43-JUA"/>
-                        <segue destination="eG6-2S-dzI" kind="relationship" relationship="viewControllers" id="WYv-Xj-9R3"/>
+                        <segue destination="h5r-ML-AbS" kind="relationship" relationship="viewControllers" id="MKO-Ym-bB2"/>
                         <segue destination="Ro2-pn-1bh" kind="relationship" relationship="viewControllers" id="lxr-tB-kmd"/>
                     </connections>
                 </tabBarController>
@@ -100,11 +84,227 @@
                             <outlet property="delegate" destination="Ro2-pn-1bh" id="Frt-l5-J2p"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Xe3-m4-2GC"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="Xe3-m4-2GC"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0H-Lh-kpr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="877.60000000000002" y="792.95352323838085"/>
         </scene>
+        <!--Hors ligne-->
+        <scene sceneID="1HD-PE-ZQs">
+            <objects>
+                <viewController id="h5r-ML-AbS" customClass="OfflineViewController" customModule="AdvancedTicTacToe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e4E-J0-Urq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" tag="-1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grille.png" translatesAutoresizingMaskIntoConstraints="NO" id="KZH-4q-i4t">
+                                <rect key="frame" x="37.5" y="169" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="SCW-K6-06n"/>
+                                    <constraint firstAttribute="width" constant="300" id="Ynl-F1-1BE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZR-6d-0sd">
+                                <rect key="frame" x="37.5" y="169" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="N6C-Qq-9tx"/>
+                                    <constraint firstAttribute="width" constant="97" id="Qmy-8p-HxG"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="z5A-9O-1lL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REt-HK-a8G">
+                                <rect key="frame" x="139" y="169" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="h13-Wu-dEc"/>
+                                    <constraint firstAttribute="height" constant="97" id="uSG-0y-jeI"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="73F-hZ-P6Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHd-lJ-e8k">
+                                <rect key="frame" x="240" y="169" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="u9P-zE-B7N"/>
+                                    <constraint firstAttribute="width" constant="97" id="zPR-r0-Me6"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="oPN-sh-CXn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvM-kM-aBB">
+                                <rect key="frame" x="240" y="271" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="5wh-R0-6T6"/>
+                                    <constraint firstAttribute="height" constant="97" id="IqG-gM-LMg"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="BDW-yg-qxv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuP-Dn-TQB">
+                                <rect key="frame" x="240" y="372" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="DWx-Pp-8O7"/>
+                                    <constraint firstAttribute="width" constant="97" id="k1t-oc-7Ef"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="UAG-VO-eEy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLU-Hz-aCa">
+                                <rect key="frame" x="139" y="372" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Wc9-wg-wSI"/>
+                                    <constraint firstAttribute="height" constant="97" id="gax-vZ-G00"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="580-TD-KEj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWE-Ta-zCt">
+                                <rect key="frame" x="37" y="372" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="3YH-x9-6gs"/>
+                                    <constraint firstAttribute="width" constant="97" id="y3p-kZ-if5"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="mre-bY-O64"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoC-M5-Icj">
+                                <rect key="frame" x="37" y="271" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="97" id="AFe-RL-8FZ"/>
+                                    <constraint firstAttribute="width" constant="97" id="ZR2-Pq-NUI"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="rd6-8M-cav"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-P8-QfM">
+                                <rect key="frame" x="139" y="271" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="BBH-YY-sRh"/>
+                                    <constraint firstAttribute="height" constant="97" id="Ojy-3n-T5z"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="h5r-ML-AbS" eventType="touchUpInside" id="TVW-8k-E0U"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW8-FZ-MNk">
+                                <rect key="frame" x="0.0" y="45" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="EWS-Be-xnF">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="d3H-OO-b5q">
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <connections>
+                                                <action selector="reloadGame:" destination="h5r-ML-AbS" id="m8y-jo-I5p"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="-1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paQ-c0-tCt">
+                                <rect key="frame" x="173" y="99" width="28" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="paQ-c0-tCt" firstAttribute="centerX" secondItem="DW8-FZ-MNk" secondAttribute="centerX" id="3CZ-db-TQe"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="REt-HK-a8G" secondAttribute="trailing" constant="-198.33333333333334" id="4p3-TR-1Dh"/>
+                            <constraint firstItem="fuP-Dn-TQB" firstAttribute="leading" secondItem="KZH-4q-i4t" secondAttribute="trailing" constant="-97.666666666666629" id="5MQ-uu-RKc"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="top" secondItem="OHd-lJ-e8k" secondAttribute="bottom" constant="-97" id="88h-oN-OHX"/>
+                            <constraint firstItem="JoC-M5-Icj" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-198" id="AKK-fW-GJG"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="centerX" secondItem="yTH-RY-rmQ" secondAttribute="centerX" id="CTY-nx-hUN"/>
+                            <constraint firstItem="dWE-Ta-zCt" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-97" id="ELh-aZ-WIk"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="centerY" secondItem="yTH-RY-rmQ" secondAttribute="centerY" id="EOE-Ic-6b2"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="7ZR-6d-0sd" secondAttribute="trailing" constant="-97" id="EYl-g0-ke4"/>
+                            <constraint firstItem="DW8-FZ-MNk" firstAttribute="top" secondItem="yTH-RY-rmQ" secondAttribute="top" constant="25" id="Gkk-G3-Lpb"/>
+                            <constraint firstItem="rLU-Hz-aCa" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-97" id="JlD-sg-LuR"/>
+                            <constraint firstItem="paQ-c0-tCt" firstAttribute="top" secondItem="DW8-FZ-MNk" secondAttribute="bottom" constant="10" id="LvN-qF-c3M"/>
+                            <constraint firstItem="gvM-kM-aBB" firstAttribute="leading" secondItem="KZH-4q-i4t" secondAttribute="trailing" constant="-97.666666666666629" id="R6X-zk-I3S"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="rLU-Hz-aCa" secondAttribute="trailing" constant="-198.33333333333334" id="YVn-GH-Yqe"/>
+                            <constraint firstItem="gvM-kM-aBB" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-198" id="amv-Zu-hfo"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="top" secondItem="7ZR-6d-0sd" secondAttribute="bottom" constant="-97" id="ei3-g8-NWN"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="JoC-M5-Icj" secondAttribute="trailing" constant="-96.333333333333343" id="k5g-pd-NFN"/>
+                            <constraint firstItem="DW8-FZ-MNk" firstAttribute="width" secondItem="e4E-J0-Urq" secondAttribute="width" id="lBJ-D5-5j3"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="top" secondItem="REt-HK-a8G" secondAttribute="bottom" constant="-97" id="lPr-de-RMn"/>
+                            <constraint firstItem="fuP-Dn-TQB" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-97" id="np3-Ux-s4n"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="1Ug-P8-QfM" secondAttribute="trailing" constant="-198.33333333333334" id="qP9-Yw-1x3"/>
+                            <constraint firstItem="OHd-lJ-e8k" firstAttribute="leading" secondItem="KZH-4q-i4t" secondAttribute="trailing" constant="-97.666666666666629" id="tvY-ZA-eev"/>
+                            <constraint firstItem="KZH-4q-i4t" firstAttribute="leading" secondItem="dWE-Ta-zCt" secondAttribute="trailing" constant="-96.333333333333343" id="wAn-0M-kC7"/>
+                            <constraint firstItem="1Ug-P8-QfM" firstAttribute="top" secondItem="KZH-4q-i4t" secondAttribute="bottom" constant="-198" id="zT0-5A-Gvk"/>
+                            <constraint firstItem="DW8-FZ-MNk" firstAttribute="centerX" secondItem="yTH-RY-rmQ" secondAttribute="centerX" id="zzt-H5-nTF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yTH-RY-rmQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Hors ligne" image="no-wifi" id="WY5-Fu-u1t"/>
+                    <connections>
+                        <outlet property="reloadButton" destination="d3H-OO-b5q" id="TAq-ll-2Wh"/>
+                        <outlet property="resultLabel" destination="paQ-c0-tCt" id="WPf-Rb-G64"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Hu-bJ-qdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-596" y="793"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="grille.png" width="16" height="16"/>
+        <image name="no-wifi" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="user" width="16" height="16"/>
+        <image name="wireless-internet" width="25.600000381469727" height="25.600000381469727"/>
+    </resources>
 </document>
