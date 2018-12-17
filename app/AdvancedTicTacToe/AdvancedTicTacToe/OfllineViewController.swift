@@ -54,6 +54,8 @@ class OfflineViewController: UIViewController {
                         resultLabel.text = "Le joueur O a gagné la partie !"
                         userDefaults.set(userDefaults.integer(forKey: "OfflineO") + 1, forKey: "OfflineO")
                     } else {
+                        let alert = CDAlertView(title: "Le joueur X a gagné la partie !", message: "Well played !", type: .success)
+                        alert.show()
                         resultLabel.text = "Le joueur X a gagné la partie !"
                         userDefaults.set(userDefaults.integer(forKey: "OfflineX") + 1, forKey: "OfflineX")
                     }
