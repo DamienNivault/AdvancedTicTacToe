@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat){
@@ -41,6 +42,35 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     var labelPassword = UITextField()
     var labelVerifPassword = UITextField()
     
+    @objc func loginForm() {
+        print("in login func")
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json",
+            ]
+        
+        let parameters = [
+            "login": labelEmail.text!,
+            "password": labelPassword.text!
+        ]
+        Alamofire.request("https://tictactoe.spau.lt/users/authenticate", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
+            
+            let json = JSON(response.result.value!)
+            let token = json["token"].stringValue
+            let username = json["username"].stringValue
+            let victories = json["victories"].intValue
+            let losses = json["losses"].intValue
+            let draws = json["draws"].intValue
+            let defaults = UserDefaults.standard
+            defaults.set(token, forKey: "token")
+            defaults.set(victories, forKey: "victories")
+            defaults.set(losses, forKey: "losses")
+            defaults.set(draws, forKey: "draws")
+            defaults.set(username, forKey: "username")
+            defaults.set(draws, forKey: "draws")
+            self.present( UIStoryboard(name: "OnlineStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MainOnlineStoryBoard") as UIViewController, animated: true, completion: nil)
+        }
+    }
     @objc func submitForm() {
         let headers = [
             "Content-Type": "application/x-www-form-urlencoded",
@@ -54,6 +84,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
             "passwordConfirm": labelVerifPassword.text!
         ]
         Alamofire.request("https://tictactoe.spau.lt/users/register", method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
+            self.loginForm()
             print("Response JSON: \(response.result.value ?? "error")")
         }
     }
