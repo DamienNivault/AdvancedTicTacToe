@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,swift
 # Edit at https://www.gitignore.io/?templates=node,swift
-
+.DS_Store
 ### Node ###
 # Logs
 logs
@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+package-lock.json
 
 # TypeScript v1 declaration files
 typings/
@@ -161,3 +162,10 @@ fastlane/test_output
 iOSInjectionProject/
 
 # End of https://www.gitignore.io/api/node,swift
+
+/server/config.json
+/server/data
+
+yarn.lock
+/app/AdvancedTicTacToe/Pods
+Podfile.lock
